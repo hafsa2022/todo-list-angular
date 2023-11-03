@@ -1,0 +1,119 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row mt-4" style="height: 500px">
+      <div class="col"></div>
+
+      <div class="col-md-6 bg-white shadow">
+        <div class="card bg-warning mt-4 border-0 text-center">
+          <h4 class="text-white ps-3 pt-2 pb-2">Todo List</h4>
+        </div>
+
+        <div class="shadow">
+          <div class="input-group p-4 shadow">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Task Name"
+              [(ngModel)]="addTaskValue"
+            />
+            <button
+              class="btn btn-outline-success"
+              type="button"
+              (click)="addTask()"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <h4 class="text-primary mt-4">Tasks :</h4>
+        <div style="overflow-y: auto; height: 350px">
+          <div class="m-3" *ngFor="let task of taskArr">
+            <div class="p-2 shadow">
+              <div class="input-group row ps-3">
+                <div class="card col-md-10 p-2 border-0">
+                  {{ task.taskName }}
+                </div>
+                <button
+                  class="btn btn-outline-primary col me-2"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  (click)="call(task)"
+                >
+                  e
+                </button>
+                <button
+                  class="btn btn-outline-danger col"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal2"
+                  (click)="call2(task)"
+                >
+                  X
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5 class="modal-title" id="exampleModalLabel">Update Task</h5>
+        <div class="input-group p-4">
+          <input type="text" class="form-control" [(ngModel)]="editTaskValue" />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+            (click)="editTask()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <strong>Are you sure you want to delete this Task ? </strong>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+            (click)="deleteTask()"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
